@@ -6,9 +6,13 @@ from datetime import datetime
 #not using either class yet
 class pomo:
 	name = ''
-	work_iters = int(0)
-	break_iters = int(0)
-	date = datetime.now()
+	hours= int(0)
+	minutes= int(0)
+	sec= int(0)
+	work = False
+	free = False
+
+	ts = datetime.now()
 
 class timer:
 	hours = 0
@@ -43,7 +47,7 @@ def less_than_ten(x):
 		return False
 
 def print_timer(minutes, name):
-	sleep_i = .25
+	sleep_i = 1
 	seconds = minutes * 60
 	
 	for i in range(seconds):
@@ -56,17 +60,17 @@ def print_timer(minutes, name):
 		if less_than_ten(remaining_min) == True and less_than_ten(remaining_sec) == True:
 			countdown = '0'+str(remaining_min)+':0'+str(remaining_sec)
 			
-		elif less_than_ten(remaining_min) == True and less_than_ten(remaining_sec)== True:
-			countdown = str(remaining_min)+':0'+str(remaining_sec)	elif less_than_ten(remaining_min) == False and less_than_ten(remaining_sec)== True:
-			countdown = str(remaining_min)+':0'+str(remaining_sec)
+		elif less_than_ten(remaining_min) == True and less_than_ten(remaining_sec)== False:
+			countdown = '0'+str(remaining_min)+':'+str(remaining_sec)
+
+		elif less_than_ten(remaining_min) == False and less_than_ten(remaining_sec) == True:
+			countdown = str(remaining_min)+':0'+str(remaining_sec)	
 
 		elif less_than_ten(remaining_min) == False and less_than_ten(remaining_sec) == False:
-			co		elif less_than_ten(remaining_min) == False and less_than_ten(remaining_sec)== True:
-			countdown = str(remaining_min)+':0'+str(remaining_sec)untdown = str(remaining_min)+':'+str(remaining_sec)
-
+			countdown = str(remaining_min)+':'+str(remaining_sec)
 		print(name,'\t',ts,'\n',countdown)
-		print('r_min',remaining_min)	
-		print('r_sec',remaining_sec)	
+		#print('r_min',remaining_min)	
+		#print('r_sec',remaining_sec)	
 		sleep(sleep_i)
 		system('clear')
 		#print_timer(minutes, name)
@@ -92,8 +96,8 @@ def main():
 	_work = int(argv[0])
 	_break = int(argv [1])
 	'''
-	_work = 10
-	_break = 2
+	_work = 25
+	_break = 5
 	start_pomo(_work,_break)
 	
 	#print_timer()
